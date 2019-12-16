@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Server.ApiHelper
 {
     /// <summary>
-    /// Establish a client, which you can use to make a connections to a REST API
+    /// 
     /// </summary>
     public class Apihelper
     {

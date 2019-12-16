@@ -1,24 +1,27 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using Server.ApiHelper;
-using Server.Model;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.IO;
+using Server.ApiHelper;
+using Server.Microservices;
+using Server.Model;
+
 
 namespace Server
 {
     class Receive
-    {
+    { 
         //Aggregation fields 
         private static string message1;  // Type and Date
         private static string message2;  // Color
         private static string message3;  // Driver name and license  
-                                         //private static string logPath = @"C:/Users/Bruger/source/repos/Mini-Project-3-microservices/Log.txt";    // Christoffer
-        private static string logPath = "C:/Users/Jonas/source/repos/Mini-Project-3-microservices/Log.txt";        // Jonas
+        private static string logPath = @"C:/Users/Bruger/source/repos/SIExam/Server/Log.txt";    // Christoffer
+        //private static string logPath = "C:/Users/Jonas/source/repos/Mini-Project-3-microservices/Log.txt";        // Jonas
 
         static async Task Main(string[] args)
         {
@@ -53,7 +56,7 @@ namespace Server
                 bool found = false;
 
 
-                Microservices.ReviewServices.Processor reviewProcessor = new Microservices.ReviewServices.Processor();
+                Microservices.ReviewService.Processor reviewProcessor = new Microservices.ReviewService.Processor();
 
                 //Message recevied
                 consumer.Received += async (model, ea) =>
@@ -65,15 +68,15 @@ namespace Server
                     replyProps.CorrelationId = props.CorrelationId;
 
                     var message = Encoding.UTF8.GetString(body).ToString();
-                        //Console.WriteLine(" [.] Message send from client", message);
-                        string[] opdelt = message.Split(' ');
+                    //Console.WriteLine(" [.] Message send from client", message);
+                    string[] opdelt = message.Split(' ');
                     var identifyer = opdelt[0];
 
                     File.AppendAllText(logPath, TimeStampForLog(" ", message));
-                        //write message down into a TXT log file (not made yet) 
+                    //write message down into a TXT log file (not made yet) 
 
-                        //Choice 1 - Review 
-                        if (identifyer == "R")
+                    //Choice 1 - Review 
+                    if (identifyer == "R")
                     {
                         switch (caseSwitchChoice)
                         {
@@ -96,18 +99,18 @@ namespace Server
                                 File.AppendAllText(logPath, TimeStampForLog("Choice case 1 - rating ", message));
                                 string realMessageRating = message.Remove(0, 1);
                                 reviewProcessor.Review.Rating = Convert.ToInt32(realMessageRating);
+                                
+                                    response = "rating ok";
+                                    File.AppendAllText(logPath, TimeStampForLog(response, message));
 
-                                response = "rating ok";
-                                File.AppendAllText(logPath, TimeStampForLog(response, message));
+                                    var responseRating = Encoding.UTF8.GetBytes(response);
 
-                                var responseRating = Encoding.UTF8.GetBytes(response);
+                                    channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
+                                         basicProperties: replyProps, body: responseRating);
+                                    channel.BasicAck(deliveryTag: ea.DeliveryTag,
+                                      multiple: false);
 
-                                channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
-                                     basicProperties: replyProps, body: responseRating);
-                                channel.BasicAck(deliveryTag: ea.DeliveryTag,
-                                  multiple: false);
-
-                                caseSwitchChoice += 1;
+                                    caseSwitchChoice += 1;
                                 break;
                             case 3:
                                 Console.WriteLine("Choice case 2 - Location");
@@ -183,8 +186,8 @@ namespace Server
                     }
                     else
                     {
-                            //Choice 2 - create booking
-                            switch (caseSwitch)
+                        //Choice 2 - create booking
+                        switch (caseSwitch)
                         {
                             case 1:
                                 Console.WriteLine("Case 0 - flow chosen");
@@ -193,16 +196,16 @@ namespace Server
                                 response = "2";
                                 var responseBytesChoice = Encoding.UTF8.GetBytes(response);
 
-                                    //Send a response back ---------------
-                                    channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
+                                //Send a response back ---------------
+                                channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
                                   basicProperties: replyProps, body: responseBytesChoice);
                                 channel.BasicAck(deliveryTag: ea.DeliveryTag,
                                   multiple: false);
 
                                 caseSwitch += 1;
                                 break;
-                                //Check avaliablityart
-                                case 2:
+                            //Check avaliablityart
+                            case 2:
                                 File.AppendAllText(logPath, TimeStampForLog("Feedback section = 2", message));
 
                                 Console.WriteLine("Case 1 - Check avaliablity");
@@ -210,15 +213,15 @@ namespace Server
                                 string statusTest1 = "Case 1 - Check avaliablity";
                                 File.AppendAllText(logPath, TimeStampForLog(statusTest1, message));
 
-                                    //EIP - Splitter  ---------------------------------------
-                                    //Splitting the data so we can use it to search the list in DataStorage for availablity
-                                    String[] messageArray = message.Split(' ');
+                                //EIP - Splitter  ---------------------------------------
+                                //Splitting the data so we can use it to search the list in DataStorage for availablity
+                                String[] messageArray = message.Split(' ');
                                 string carType = messageArray[0];
                                 string date = messageArray[1];
-                                    //EIP - Splitter ---------------------------------------
+                                //EIP - Splitter ---------------------------------------
 
 
-                                    foreach (var car in processor.CarList)
+                                foreach (var car in processor.CarList)
                                 {
                                     if (car.Type == carType && car.Date == date)
                                     {
@@ -236,20 +239,20 @@ namespace Server
                                     Console.WriteLine("bil blev fundet");
                                     File.AppendAllText(logPath, TimeStampForLog(statusTest1, response));
 
-                                        //EIP - Request & Reply ------------------------------------
-                                        //New message created -----------------
-                                        var responseBytes = Encoding.UTF8.GetBytes(response);
-                                        //New message created -----------------
+                                    //EIP - Request & Reply ------------------------------------
+                                    //New message created -----------------
+                                    var responseBytes = Encoding.UTF8.GetBytes(response);
+                                    //New message created -----------------
 
-                                        //Send a response back ---------------
-                                        channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
+                                    //Send a response back ---------------
+                                    channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
                                       basicProperties: replyProps, body: responseBytes);
                                     channel.BasicAck(deliveryTag: ea.DeliveryTag,
                                       multiple: false);
-                                        //Send a response back ---------------
-                                        //EIP - Request & Reply ------------------------------------
+                                    //Send a response back ---------------
+                                    //EIP - Request & Reply ------------------------------------
 
-                                        caseSwitch += 1;
+                                    caseSwitch += 1;
                                 }
                                 else
                                 {
@@ -264,8 +267,8 @@ namespace Server
                                       multiple: false);
                                 }
                                 break;
-                                //Choose color 
-                                case 3:
+                            //Choose color 
+                            case 3:
                                 Console.WriteLine("case 2 - choose color");
                                 message2 = message;
                                 string statusTest2 = "case 2 - choose color";
@@ -382,19 +385,19 @@ namespace Server
                                 Booking booking = new Booking(driver, selectedCar, DateTime.Now);
 
 
-                                    //EIP - Aggregator  ------------------------------------------
-                                    if (message1 != string.Empty && message2 != string.Empty && message3 != string.Empty)
+                                //EIP - Aggregator  ------------------------------------------
+                                if (message1 != string.Empty && message2 != string.Empty && message3 != string.Empty)
                                 {
                                     response = message1 + message2 + message3;
                                     File.AppendAllText(logPath, TimeStampForLog(statusTest5, response));
                                 }
-                                    //EIP - Aggregator  ------------------------------------------
+                                //EIP - Aggregator  ------------------------------------------
 
-                                    //Saves informations in a TXT file (illustrate database) 
-                                    File.AppendAllText(@"C:/Users/Jonas/source/repos/Mini-Project-3-microservices/CompletedRentals.txt", CompletePost(response));  //Jonas
-                                                                                                                                                                   //File.AppendAllText(@"C:/Users/Bruger/source/repos/Mini-Project-3-microservices/CompletedRentals.txt", CompletePost(response)); //Christoffer
+                                //Saves informations in a TXT file (illustrate database) 
+                                //File.AppendAllText(@"C:/Users/Jonas/source/repos/Mini-Project-3-microservices/CompletedRentals.txt", CompletePost(response));  //Jonas
+                                File.AppendAllText(@"C:/Users/Bruger/source/repos/SIExam/Server/CompletedRentals.txt", CompletePost(response)); //Christoffer
 
-                                    var responseBytesCase5 = Encoding.UTF8.GetBytes(response);
+                                var responseBytesCase5 = Encoding.UTF8.GetBytes(response);
                                 channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
                                   basicProperties: replyProps, body: responseBytesCase5);
                                 channel.BasicAck(deliveryTag: ea.DeliveryTag,
@@ -425,5 +428,4 @@ namespace Server
             return response;
         }
     }
-
 }

@@ -1,0 +1,57 @@
+﻿12/12/2019 03:06:46  with message: R
+12/12/2019 03:06:46 Feedback section = 1with message: R
+12/12/2019 03:06:49  with message: R 3
+12/12/2019 03:06:49 Choice case 1 - rating with message: R 3
+12/12/2019 03:06:49 rating okwith message: R 3
+12/12/2019 03:07:00  with message: R lærkevej 2 4040 skovby
+12/12/2019 03:07:00 Choice case 2 - Locationwith message: R lærkevej 2 4040 skovby
+12/12/2019 03:07:00 Location registeredwith message: R lærkevej 2 4040 skovby
+12/12/2019 03:07:31  with message: R det var faktisk og betjening 
+12/12/2019 03:07:31 Choice case 3 - descriptionwith message: R det var faktisk og betjening 
+12/12/2019 03:07:31 description registered okwith message: R det var faktisk og betjening 
+12/12/2019 03:07:34  with message: R male
+12/12/2019 03:07:34 Choice case 4 - genderwith message: R male
+12/12/2019 03:07:34 gender registered okwith message: R male
+12/12/2019 03:07:37  with message: R 23
+12/12/2019 03:07:37 Choice case 4 - agewith message: R 23
+12/12/2019 03:07:37 Age registered okwith message: R 23
+12/12/2019 03:07:53  with message: C
+12/12/2019 03:07:53 Case 0 - flow chosenwith message: C
+12/12/2019 03:08:01  with message: Audi 20/11/2019
+12/12/2019 03:08:01 Feedback section = 2with message: Audi 20/11/2019
+12/12/2019 03:08:01 Case 1 - Check avaliablitywith message: Audi 20/11/2019
+12/12/2019 03:08:01 Case 1 - Check avaliablitywith message: bil blev fundet
+12/12/2019 03:08:01  with message:  
+12/12/2019 03:08:01 case 2 - choose colorwith message:  
+12/12/2019 03:08:01 case 2 - choose colorwith message:  red blue black green
+12/12/2019 03:08:04  with message: red
+12/12/2019 03:08:04 case 3 - choose carwith message: red
+12/12/2019 03:08:04 case 3 - choose carwith message: Audi red 35000 20/11/2019 -Audi red 45000 20/11/2019 -
+12/12/2019 03:08:06  with message: 2
+12/12/2019 03:08:06 case 4 - selecet carwith message: 2
+12/12/2019 03:08:06 case 4 - selecet carwith message: selected CAR: Audi red 45000 20/11/2019 
+12/12/2019 03:08:06 case 4 - selecet carwith message: 2
+12/12/2019 03:08:26  with message: Ber bo jens 21412312412412
+12/12/2019 03:08:26 case 5 - create bookingwith message: Ber bo jens 21412312412412
+12/12/2019 03:08:26 case 5 - create bookingwith message: Audi 20/11/2019 Ber bo jens 21412312412412
+12/12/2019 03:08:43  with message: R
+12/12/2019 03:08:43 Choice case 4 - agewith message: R
+16-12-2019 21:53:42  with message: C
+16-12-2019 21:53:42 Case 0 - flow chosenwith message: C
+16-12-2019 21:53:52  with message: Audi 20/11/2019
+16-12-2019 21:53:52 Feedback section = 2with message: Audi 20/11/2019
+16-12-2019 21:53:52 Case 1 - Check avaliablitywith message: Audi 20/11/2019
+16-12-2019 21:53:52 Case 1 - Check avaliablitywith message: bil blev fundet
+16-12-2019 21:53:52  with message:  
+16-12-2019 21:53:52 case 2 - choose colorwith message:  
+16-12-2019 21:53:52 case 2 - choose colorwith message:  red blue black green
+16-12-2019 21:53:57  with message: blue
+16-12-2019 21:53:57 case 3 - choose carwith message: blue
+16-12-2019 21:53:57 case 3 - choose carwith message: Audi blue 15000 20/11/2019 -
+16-12-2019 21:54:02  with message: 1
+16-12-2019 21:54:02 case 4 - selecet carwith message: 1
+16-12-2019 21:54:02 case 4 - selecet carwith message: selected CAR: Audi blue 15000 20/11/2019 
+16-12-2019 21:54:02 case 4 - selecet carwith message: 1
+16-12-2019 21:54:15  with message: christoffer klunk ring 230239120931
+16-12-2019 21:54:15 case 5 - create bookingwith message: christoffer klunk ring 230239120931
+16-12-2019 21:54:15 case 5 - create bookingwith message: Audi 20/11/2019 christoffer klunk ring 230239120931

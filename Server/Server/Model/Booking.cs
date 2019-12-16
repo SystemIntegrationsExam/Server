@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Model
+namespace Server
 {
-    public class Booking
+    class Booking
     {
         private Driver driver;
         private Car car;

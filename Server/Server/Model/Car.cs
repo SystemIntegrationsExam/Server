@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Model
+namespace Server
 {
     public class Car
     {
@@ -37,7 +37,7 @@ namespace Server.Model
         {
             get { return date; }
             set { date = value; }
-        }
+        } 
         public string Color
         {
             get { return color; }

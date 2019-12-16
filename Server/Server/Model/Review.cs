@@ -18,7 +18,7 @@ namespace Server.Model
         {
 
         }
-
+        
         public int Rating
         {
             get { return rating; }
