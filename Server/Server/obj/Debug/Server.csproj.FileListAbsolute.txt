@@ -1,0 +1,6 @@
+C:\Users\Jonas\source\repos\Server\Server\bin\Debug\Server.exe.config
+C:\Users\Jonas\source\repos\Server\Server\bin\Debug\Server.exe
+C:\Users\Jonas\source\repos\Server\Server\bin\Debug\Server.pdb
+C:\Users\Jonas\source\repos\Server\Server\obj\Debug\Server.csprojAssemblyReference.cache
+C:\Users\Jonas\source\repos\Server\Server\obj\Debug\Server.exe
+C:\Users\Jonas\source\repos\Server\Server\obj\Debug\Server.pdb
