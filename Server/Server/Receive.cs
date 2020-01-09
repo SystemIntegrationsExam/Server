@@ -15,13 +15,15 @@ using Server.Model;
 namespace Server
 {
     class Receive
-    { 
+    {
         //Aggregation fields 
         private static string message1;  // Type and Date
         private static string message2;  // Color
         private static string message3;  // Driver name and license  
-        private static string logPath = @"C:/Users/Bruger/source/repos/SIExam/Server/Log.txt";    // Christoffer
-        //private static string logPath = "C:/Users/Jonas/source/repos/Mini-Project-3-microservices/Log.txt";        // Jonas
+        //private static string logPath = @"C:/Users/Bruger/source/repos/Mini-Project-3-microservices/Log.txt";    // Christoffer
+        //private static string logPath = "C:/Users/Jonas/source/repos/Mini-Project-3-microservices/Log.txt";      // Jonas mac 
+        private static string logPath = "C:/Users/Bruger/Documents/GitHub/Server/Log.txt";   // Jonas
+
 
         static async Task Main(string[] args)
         {
@@ -81,10 +83,11 @@ namespace Server
                         switch (caseSwitchChoice)
                         {
                             case 1:
+                                File.AppendAllText(logPath, Setuplog("----------------------------Flow start----------------------------"));
                                 Review review = new Review();
-
-                                Console.WriteLine("Feedback section");
-                                File.AppendAllText(logPath, TimeStampForLog("Feedback section = 1", message));
+                                string section1 = "Feedback section";
+                                Console.WriteLine(section1);
+                                File.AppendAllText(logPath, TimeStampForLog(section1, message));
 
                                 var responseBytes = Encoding.UTF8.GetBytes("R");
                                 channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
@@ -95,26 +98,28 @@ namespace Server
                                 caseSwitchChoice += 1;
                                 break;
                             case 2:
-                                Console.WriteLine("Choice case 1 - rating");
-                                File.AppendAllText(logPath, TimeStampForLog("Choice case 1 - rating ", message));
+                                string section2 = "Choice case 1 - rating";
+                                Console.WriteLine(section2);
+                                File.AppendAllText(logPath, TimeStampForLog(section2, message));
                                 string realMessageRating = message.Remove(0, 1);
                                 reviewProcessor.Review.Rating = Convert.ToInt32(realMessageRating);
-                                
-                                    response = "rating ok";
-                                    File.AppendAllText(logPath, TimeStampForLog(response, message));
 
-                                    var responseRating = Encoding.UTF8.GetBytes(response);
+                                response = "rating ok";
+                                File.AppendAllText(logPath, TimeStampForLog(response, message));
 
-                                    channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
-                                         basicProperties: replyProps, body: responseRating);
-                                    channel.BasicAck(deliveryTag: ea.DeliveryTag,
-                                      multiple: false);
+                                var responseRating = Encoding.UTF8.GetBytes(response);
 
-                                    caseSwitchChoice += 1;
+                                channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
+                                     basicProperties: replyProps, body: responseRating);
+                                channel.BasicAck(deliveryTag: ea.DeliveryTag,
+                                  multiple: false);
+
+                                caseSwitchChoice += 1;
                                 break;
                             case 3:
-                                Console.WriteLine("Choice case 2 - Location");
-                                File.AppendAllText(logPath, TimeStampForLog("Choice case 2 - Location", message));
+                                string section3 = "Choice case 2 - Location";
+                                Console.WriteLine(section3);
+                                File.AppendAllText(logPath, TimeStampForLog(section3, message));
                                 string realMessageLocation = message.Remove(0, 1);
                                 reviewProcessor.Review.Location = realMessageLocation;
 
@@ -130,8 +135,9 @@ namespace Server
                                 caseSwitchChoice += 1;
                                 break;
                             case 4:
-                                Console.WriteLine("Choice case 3 - description");
-                                File.AppendAllText(logPath, TimeStampForLog("Choice case 3 - description", message));
+                                string section4 = "Choice case 3 - description";
+                                Console.WriteLine(section4);
+                                File.AppendAllText(logPath, TimeStampForLog(section4, message));
                                 string realMessagedescription = message.Remove(0, 1);
                                 reviewProcessor.Review.Description = realMessagedescription;
 
@@ -146,8 +152,9 @@ namespace Server
                                 caseSwitchChoice += 1;
                                 break;
                             case 5:
-                                Console.WriteLine("Choice case 4 - gender");
-                                File.AppendAllText(logPath, TimeStampForLog("Choice case 4 - gender", message));
+                                string section5 = "Choice case 4 - gender";
+                                Console.WriteLine(section5);
+                                File.AppendAllText(logPath, TimeStampForLog(section5, message));
                                 string realMessageGender = message.Remove(0, 1);
                                 reviewProcessor.Review.Gender = realMessageGender;
 
@@ -162,9 +169,11 @@ namespace Server
                                 caseSwitchChoice += 1;
                                 break;
                             case 6:
-                                Console.WriteLine("Choice case 5 - age");
-                                File.AppendAllText(logPath, TimeStampForLog("Choice case 4 - age", message));
+                                string section6 = "Choice case 5 - age";
+                                Console.WriteLine(section6);
+                                File.AppendAllText(logPath, TimeStampForLog(section6, message));
                                 string realMessageAge = message.Remove(0, 1);
+
                                 reviewProcessor.Review.Age = Convert.ToInt32(realMessageAge);
 
                                 response = "Age registered ok";
@@ -178,9 +187,18 @@ namespace Server
 
                                 await reviewProcessor.PostReview();
 
+                                //reset the server variable controlling the flow, so it can start over. 
+                                caseSwitch = 1;
+                                caseSwitchChoice = 1;
+                                selectedCar = null;
+                                found = false;
+                                identifyer = " ";
+                                File.AppendAllText(logPath, Setuplog("----------------------------Flow end----------------------------"));
                                 break;
                             default:
-                                Console.WriteLine("Default case");
+                                string defaultCaseString = "Default case";
+                                Console.WriteLine(defaultCaseString);
+                                File.AppendAllText(logPath, TimeStampForLog(defaultCaseString, message));
                                 break;
                         }
                     }
@@ -190,9 +208,10 @@ namespace Server
                         switch (caseSwitch)
                         {
                             case 1:
-                                Console.WriteLine("Case 0 - flow chosen");
-                                string statusTest0 = "Case 0 - flow chosen";
-                                File.AppendAllText(logPath, TimeStampForLog(statusTest0, message));
+                                File.AppendAllText(logPath, Setuplog("----------------------------Flow start----------------------------"));
+                                string section2_1 = "Case 0 - flow chosen";
+                                Console.WriteLine(section2_1);
+                                File.AppendAllText(logPath, TimeStampForLog(section2_1, message));
                                 response = "2";
                                 var responseBytesChoice = Encoding.UTF8.GetBytes(response);
 
@@ -207,7 +226,6 @@ namespace Server
                             //Check avaliablityart
                             case 2:
                                 File.AppendAllText(logPath, TimeStampForLog("Feedback section = 2", message));
-
                                 Console.WriteLine("Case 1 - Check avaliablity");
                                 message1 = message;
                                 string statusTest1 = "Case 1 - Check avaliablity";
@@ -269,10 +287,10 @@ namespace Server
                                 break;
                             //Choose color 
                             case 3:
-                                Console.WriteLine("case 2 - choose color");
+                                string section2_3 = "case 2 - choose color";
+                                Console.WriteLine(section2_3);
                                 message2 = message;
-                                string statusTest2 = "case 2 - choose color";
-                                File.AppendAllText(logPath, TimeStampForLog(statusTest2, message));
+                                File.AppendAllText(logPath, TimeStampForLog(section2_3, message));
 
                                 foreach (var car in availableCars)
                                 {
@@ -293,11 +311,11 @@ namespace Server
                                 if (response == string.Empty)
                                 {
                                     response = "Color not found, please try with another one or check spelling";
-                                    File.AppendAllText(logPath, TimeStampForLog(statusTest2, response));
+                                    File.AppendAllText(logPath, TimeStampForLog(section2_3, response));
                                 }
                                 else
                                 {
-                                    File.AppendAllText(logPath, TimeStampForLog(statusTest2, response));
+                                    File.AppendAllText(logPath, TimeStampForLog(section2_3, response));
                                     var responseBytesCase2 = Encoding.UTF8.GetBytes(response);
                                     channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
                                       basicProperties: replyProps, body: responseBytesCase2);
@@ -307,18 +325,18 @@ namespace Server
                                 }
                                 break;
                             case 4:
-                                Console.WriteLine("case 3 - choose car");
-                                string statusTest3 = "case 3 - choose car";
-                                File.AppendAllText(logPath, TimeStampForLog(statusTest3, message));
+                                string section2_4 = "case 3 - choose car";
+                                Console.WriteLine(section2_4);
+                                File.AppendAllText(logPath, TimeStampForLog(section2_4, message));
                                 if (message == string.Empty)
                                 {
                                     response = "Please type a color to preceed";
-                                    File.AppendAllText(logPath, TimeStampForLog(statusTest3, response));
+                                    File.AppendAllText(logPath, TimeStampForLog(section2_4, response));
                                 }
                                 else if (colorsFound.Contains(message) == false)
                                 {
                                     response = "Spelling ERORR, please try agian";
-                                    File.AppendAllText(logPath, TimeStampForLog(statusTest3, response));
+                                    File.AppendAllText(logPath, TimeStampForLog(section2_4, response));
                                 }
                                 else
                                 {
@@ -336,7 +354,7 @@ namespace Server
                                         chooseCarList.Add(car);
                                     }
 
-                                    File.AppendAllText(logPath, TimeStampForLog(statusTest3, response));
+                                    File.AppendAllText(logPath, TimeStampForLog(section2_4, response));
                                     caseSwitch += 1;
                                 }
 
@@ -348,24 +366,24 @@ namespace Server
 
                                 break;
                             case 5:
-                                string statusTest4 = "case 4 - selecet car";
-                                Console.WriteLine(statusTest4);
-                                File.AppendAllText(logPath, TimeStampForLog(statusTest4, message));
+                                string section2_5 = "case 4 - selecet car";
+                                Console.WriteLine(section2_5);
+                                File.AppendAllText(logPath, TimeStampForLog(section2_5, message));
                                 int index = Convert.ToInt32(message) - 1;
                                 if (index < 0 || availableCarsByColor.Count < index + 1)
                                 {
                                     response = "The number is not valid, try with a differnt one";
-                                    File.AppendAllText(logPath, TimeStampForLog(statusTest4, response));
+                                    File.AppendAllText(logPath, TimeStampForLog(section2_5, response));
                                 }
                                 else
                                 {
                                     selectedCar = chooseCarList[index];
                                     response = "selected CAR: " + selectedCar.ToString();
-                                    File.AppendAllText(logPath, TimeStampForLog(statusTest4, response));
+                                    File.AppendAllText(logPath, TimeStampForLog(section2_5, response));
                                     caseSwitch += 1;
                                 }
 
-                                File.AppendAllText(logPath, TimeStampForLog(statusTest4, message));
+                                File.AppendAllText(logPath, TimeStampForLog(section2_5, message));
                                 var responseBytesCase4 = Encoding.UTF8.GetBytes(response);
                                 channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
                                   basicProperties: replyProps, body: responseBytesCase4);
@@ -373,9 +391,9 @@ namespace Server
                                   multiple: false);
                                 break;
                             case 6:
-                                string statusTest5 = "case 5 - create booking";
-                                Console.WriteLine(statusTest5);
-                                File.AppendAllText(logPath, TimeStampForLog(statusTest5, message));
+                                string section2_6 = "case 5 - create booking";
+                                Console.WriteLine(section2_6);
+                                File.AppendAllText(logPath, TimeStampForLog(section2_6, message));
 
                                 message3 = message;
                                 string[] nameAndLicense = message.Split(' ');
@@ -389,13 +407,16 @@ namespace Server
                                 if (message1 != string.Empty && message2 != string.Empty && message3 != string.Empty)
                                 {
                                     response = message1 + message2 + message3;
-                                    File.AppendAllText(logPath, TimeStampForLog(statusTest5, response));
+                                    File.AppendAllText(logPath, TimeStampForLog(section2_6, response));
                                 }
                                 //EIP - Aggregator  ------------------------------------------
 
                                 //Saves informations in a TXT file (illustrate database) 
-                                //File.AppendAllText(@"C:/Users/Jonas/source/repos/Mini-Project-3-microservices/CompletedRentals.txt", CompletePost(response));  //Jonas
-                                File.AppendAllText(@"C:/Users/Bruger/source/repos/SIExam/Server/CompletedRentals.txt", CompletePost(response)); //Christoffer
+                                File.AppendAllText(@"C:/Users/Bruger/Documents/GitHub/Server/CompletedRentals.txt", CompletePost(response));  //Jonas
+                                //File.AppendAllText(@"C:/Users/Jonas/source/repos/Mini-Project-3-microservices/CompletedRentals.txt", CompletePost(response));  //Jonas mac
+                                //File.AppendAllText(@"C:/Users/Bruger/source/repos/Mini-Project-3-microservices/CompletedRentals.txt", CompletePost(response)); //Christoffer
+                                Console.WriteLine("Booking has been created");
+                                File.AppendAllText(logPath, TimeStampForLog("section2_6", "Booking has been created"));
 
                                 var responseBytesCase5 = Encoding.UTF8.GetBytes(response);
                                 channel.BasicPublish(exchange: "", routingKey: props.ReplyTo,
@@ -403,15 +424,23 @@ namespace Server
                                 channel.BasicAck(deliveryTag: ea.DeliveryTag,
                                   multiple: false);
 
+                                File.AppendAllText(logPath, Setuplog("----------------------------Flow end----------------------------"));
+                                //reset the server variable controlling the flow, so it can start over. 
+                                caseSwitch = 1;
+                                caseSwitchChoice = 1;
+                                selectedCar = null;
+                                found = false;
+                                identifyer = " ";
 
                                 break;
                             default:
-                                Console.WriteLine("Default case");
+                                string defaultCaseString = "Default case";
+                                Console.WriteLine(defaultCaseString);
+                                File.AppendAllText(logPath, TimeStampForLog(defaultCaseString, message));
                                 break;
                         }
                     }
                 };
-
                 Console.WriteLine(" Press [enter] to exit.");
                 Console.ReadLine();
             }
@@ -419,7 +448,12 @@ namespace Server
 
         private static string TimeStampForLog(string casestatus, string message)
         {
-            string response = DateTime.Now + " " + casestatus + "with message: " + message + Environment.NewLine; ;
+            string response = DateTime.Now + "    -    " + casestatus + "   -    with message: " + message + Environment.NewLine; ;
+            return response;
+        }
+        private static string Setuplog(string message)
+        {
+            string response = message + Environment.NewLine; ;
             return response;
         }
         private static string CompletePost(string information)
