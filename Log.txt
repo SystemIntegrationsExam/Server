@@ -185,3 +185,190 @@
 11-01-2020 15:24:53    -    Choice case 5 - age   -    with message: R 23
 11-01-2020 15:24:53    -    Age registered ok   -    with message: R 23
 ----------------------------Flow end----------------------------
+11-01-2020 19:53:22    -        -    with message: C
+----------------------------Flow start----------------------------
+11-01-2020 19:53:22    -    Create Section   -    with message: C
+11-01-2020 19:53:29    -        -    with message: Audi 20/11/2019
+11-01-2020 19:53:29    -    Feedback section = 2   -    with message: Audi 20/11/2019
+11-01-2020 19:53:29    -    Case 1 - Check avaliablity   -    with message: Audi 20/11/2019
+11-01-2020 19:53:29    -    Case 1 - Check avaliablity   -    with message: bil blev fundet
+11-01-2020 19:53:29    -        -    with message:  
+11-01-2020 19:53:29    -    case 2 - choose color   -    with message:  
+11-01-2020 19:53:29    -    case 2 - choose color   -    with message:  red blue black green
+11-01-2020 19:53:38    -        -    with message: red
+11-01-2020 19:53:38    -    case 3 - choose car   -    with message: red
+11-01-2020 19:53:38    -    case 3 - choose car   -    with message: Audi red 35000 20/11/2019 -Audi red 45000 20/11/2019 -
+11-01-2020 19:53:46    -        -    with message: 1
+11-01-2020 19:53:46    -    case 4 - selecet car   -    with message: 1
+11-01-2020 19:53:46    -    case 4 - selecet car   -    with message: selected CAR: Audi red 35000 20/11/2019 
+11-01-2020 19:53:46    -    case 4 - selecet car   -    with message: 1
+11-01-2020 19:53:54    -        -    with message: jonas Pedersen 2512512412
+11-01-2020 19:53:54    -    case 5 - create booking   -    with message: jonas Pedersen 2512512412
+11-01-2020 19:53:54    -    case 5 - create booking   -    with message: Audi 20/11/2019 jonas Pedersen 2512512412
+11-01-2020 19:53:54    -    section2_6   -    with message: Booking has been created
+----------------------------Flow end----------------------------
+11-01-2020 19:54:14    -        -    with message: R
+----------------------------Flow start----------------------------
+11-01-2020 19:54:14    -    Feedback section   -    with message: R
+11-01-2020 19:54:18    -        -    with message: R 4
+11-01-2020 19:54:18    -    Choice case 1 - rating   -    with message: R 4
+11-01-2020 19:54:18    -    rating ok   -    with message: R 4
+11-01-2020 19:54:26    -        -    with message: R kildevej 19, 4000 roskilde
+11-01-2020 19:54:26    -    Choice case 2 - Location   -    with message: R kildevej 19, 4000 roskilde
+11-01-2020 19:54:26    -    Location registered   -    with message: R kildevej 19, 4000 roskilde
+11-01-2020 19:54:32    -        -    with message: R The service was nice
+11-01-2020 19:54:32    -    Choice case 3 - description   -    with message: R The service was nice
+11-01-2020 19:54:32    -    description registered ok   -    with message: R The service was nice
+11-01-2020 19:54:34    -        -    with message: R male
+11-01-2020 19:54:34    -    Choice case 4 - gender   -    with message: R male
+11-01-2020 19:54:34    -    gender registered ok   -    with message: R male
+11-01-2020 19:54:36    -        -    with message: R 23
+11-01-2020 19:54:37    -    Choice case 5 - age   -    with message: R 23
+11-01-2020 19:54:37    -    Age registered ok   -    with message: R 23
+----------------------------Flow end----------------------------
+11-01-2020 21:00:28    -        -    with message: C
+----------------------------Flow start----------------------------
+11-01-2020 21:00:28    -    Create Section   -    with message: C
+11-01-2020 21:00:34    -        -    with message: Audi 20/11/2019
+11-01-2020 21:00:34    -    Feedback section = 2   -    with message: Audi 20/11/2019
+11-01-2020 21:00:34    -    Case 1 - Check avaliablity   -    with message: Audi 20/11/2019
+11-01-2020 21:00:34    -    Case 1 - Check avaliablity   -    with message: bil blev fundet
+11-01-2020 21:00:34    -        -    with message:  
+11-01-2020 21:00:34    -    case 2 - choose color   -    with message:  
+11-01-2020 21:00:34    -    case 2 - choose color   -    with message:  red blue black green
+11-01-2020 21:00:41    -        -    with message: red
+11-01-2020 21:00:41    -    case 3 - choose car   -    with message: red
+11-01-2020 21:00:41    -    case 3 - choose car   -    with message: Audi red 35000 20/11/2019 -Audi red 45000 20/11/2019 -
+11-01-2020 21:00:50    -        -    with message: 2
+11-01-2020 21:00:50    -    case 4 - selecet car   -    with message: 2
+11-01-2020 21:00:50    -    case 4 - selecet car   -    with message: selected CAR: Audi red 45000 20/11/2019 
+11-01-2020 21:00:50    -    case 4 - selecet car   -    with message: 2
+11-01-2020 21:00:56    -        -    with message: Jonas Pedersen 125124812371
+11-01-2020 21:00:56    -    case 5 - create booking   -    with message: Jonas Pedersen 125124812371
+11-01-2020 21:00:56    -    case 5 - create booking   -    with message: Audi 20/11/2019 Jonas Pedersen 125124812371
+11-01-2020 21:00:56    -    section2_6   -    with message: Booking has been created
+----------------------------Flow end----------------------------
+11-01-2020 21:01:08    -        -    with message: R
+----------------------------Flow start----------------------------
+11-01-2020 21:01:08    -    Feedback section   -    with message: R
+11-01-2020 21:01:12    -        -    with message: R 5
+11-01-2020 21:01:12    -    Choice case 1 - rating   -    with message: R 5
+11-01-2020 21:01:12    -    rating ok   -    with message: R 5
+11-01-2020 21:01:19    -        -    with message: R kildevej 19, 4000 Roskilde
+11-01-2020 21:01:19    -    Choice case 2 - Location   -    with message: R kildevej 19, 4000 Roskilde
+11-01-2020 21:01:19    -    Location registered   -    with message: R kildevej 19, 4000 Roskilde
+11-01-2020 21:01:27    -        -    with message: R this very nice service, thank you
+11-01-2020 21:01:27    -    Choice case 3 - description   -    with message: R this very nice service, thank you
+11-01-2020 21:01:27    -    description registered ok   -    with message: R this very nice service, thank you
+11-01-2020 21:01:30    -        -    with message: R male
+11-01-2020 21:01:30    -    Choice case 4 - gender   -    with message: R male
+11-01-2020 21:01:30    -    gender registered ok   -    with message: R male
+11-01-2020 21:01:32    -        -    with message: R 23
+11-01-2020 21:01:32    -    Choice case 5 - age   -    with message: R 23
+11-01-2020 21:01:32    -    Age registered ok   -    with message: R 23
+----------------------------Flow end----------------------------
+11-01-2020 22:27:04    -        -    with message: R
+----------------------------Flow start----------------------------
+11-01-2020 22:27:04    -    Feedback section   -    with message: R
+11-01-2020 22:27:06    -        -    with message: R 5
+11-01-2020 22:27:06    -    Choice case 1 - rating   -    with message: R 5
+11-01-2020 22:27:06    -    rating ok   -    with message: R 5
+11-01-2020 22:27:09    -        -    with message: R kildevej 19
+11-01-2020 22:27:09    -    Choice case 2 - Location   -    with message: R kildevej 19
+11-01-2020 22:27:09    -    Location registered   -    with message: R kildevej 19
+11-01-2020 22:27:16    -        -    with message: R this was a very nice service
+11-01-2020 22:27:16    -    Choice case 3 - description   -    with message: R this was a very nice service
+11-01-2020 22:27:16    -    description registered ok   -    with message: R this was a very nice service
+11-01-2020 22:27:18    -        -    with message: R male
+11-01-2020 22:27:18    -    Choice case 4 - gender   -    with message: R male
+11-01-2020 22:27:18    -    gender registered ok   -    with message: R male
+11-01-2020 22:27:21    -        -    with message: R 23
+11-01-2020 22:27:21    -    Choice case 5 - age   -    with message: R 23
+11-01-2020 22:27:21    -    Age registered ok   -    with message: R 23
+----------------------------Flow end----------------------------
+11-01-2020 22:30:27    -        -    with message: R
+----------------------------Flow start----------------------------
+11-01-2020 22:30:27    -    Feedback section   -    with message: R
+11-01-2020 22:30:28    -        -    with message: R 5
+11-01-2020 22:30:28    -    Choice case 1 - rating   -    with message: R 5
+11-01-2020 22:30:28    -    rating ok   -    with message: R 5
+11-01-2020 22:30:32    -        -    with message: R kildevej 19 4000 roskilde
+11-01-2020 22:30:32    -    Choice case 2 - Location   -    with message: R kildevej 19 4000 roskilde
+11-01-2020 22:30:32    -    Location registered   -    with message: R kildevej 19 4000 roskilde
+11-01-2020 22:30:35    -        -    with message: R this was ncie
+11-01-2020 22:30:35    -    Choice case 3 - description   -    with message: R this was ncie
+11-01-2020 22:30:35    -    description registered ok   -    with message: R this was ncie
+11-01-2020 22:30:36    -        -    with message: R male
+11-01-2020 22:30:37    -    Choice case 4 - gender   -    with message: R male
+11-01-2020 22:30:37    -    gender registered ok   -    with message: R male
+11-01-2020 22:30:37    -        -    with message: R 23
+11-01-2020 22:30:37    -    Choice case 5 - age   -    with message: R 23
+11-01-2020 22:30:37    -    Age registered ok   -    with message: R 23
+----------------------------Flow end----------------------------
+11-01-2020 22:34:24    -        -    with message: C
+----------------------------Flow start----------------------------
+11-01-2020 22:34:24    -    Create Section   -    with message: C
+11-01-2020 22:34:29    -        -    with message: Audi 20/11/2019
+11-01-2020 22:34:29    -    Feedback section = 2   -    with message: Audi 20/11/2019
+11-01-2020 22:34:29    -    Case 1 - Check avaliablity   -    with message: Audi 20/11/2019
+11-01-2020 22:34:29    -    Case 1 - Check avaliablity   -    with message: bil blev fundet
+11-01-2020 22:34:29    -        -    with message:  
+11-01-2020 22:34:29    -    case 2 - choose color   -    with message:  
+11-01-2020 22:34:29    -    case 2 - choose color   -    with message:  red blue black green
+11-01-2020 22:34:30    -        -    with message: red
+11-01-2020 22:34:30    -    case 3 - choose car   -    with message: red
+11-01-2020 22:34:30    -    case 3 - choose car   -    with message: Audi red 35000 20/11/2019 -Audi red 45000 20/11/2019 -
+11-01-2020 22:34:33    -        -    with message: 1
+11-01-2020 22:34:33    -    case 4 - selecet car   -    with message: 1
+11-01-2020 22:34:33    -    case 4 - selecet car   -    with message: selected CAR: Audi red 35000 20/11/2019 
+11-01-2020 22:34:33    -    case 4 - selecet car   -    with message: 1
+11-01-2020 22:34:38    -        -    with message: jonas Pedersen 215124123
+11-01-2020 22:34:38    -    case 5 - create booking   -    with message: jonas Pedersen 215124123
+11-01-2020 22:34:38    -    case 5 - create booking   -    with message: Audi 20/11/2019 jonas Pedersen 215124123
+11-01-2020 22:34:38    -    section2_6   -    with message: Booking has been created
+----------------------------Flow end----------------------------
+11-01-2020 22:35:52    -        -    with message: C
+----------------------------Flow start----------------------------
+11-01-2020 22:35:52    -    Create Section   -    with message: C
+11-01-2020 22:35:57    -        -    with message: Audi 20/11/201
+11-01-2020 22:35:57    -    Feedback section = 2   -    with message: Audi 20/11/201
+11-01-2020 22:35:57    -    Case 1 - Check avaliablity   -    with message: Audi 20/11/201
+11-01-2020 22:35:57    -    Case 1 - Check avaliablity   -    with message: bil blev ikke fundet
+11-01-2020 22:36:03    -        -    with message: Audi 20/11/2019
+11-01-2020 22:36:03    -    Feedback section = 2   -    with message: Audi 20/11/2019
+11-01-2020 22:36:03    -    Case 1 - Check avaliablity   -    with message: Audi 20/11/2019
+11-01-2020 22:36:03    -    Case 1 - Check avaliablity   -    with message: bil blev fundet
+11-01-2020 22:36:03    -        -    with message:  
+11-01-2020 22:36:03    -    case 2 - choose color   -    with message:  
+11-01-2020 22:36:03    -    case 2 - choose color   -    with message:  red blue black green
+11-01-2020 22:36:05    -        -    with message: red
+11-01-2020 22:36:05    -    case 3 - choose car   -    with message: red
+11-01-2020 22:36:05    -    case 3 - choose car   -    with message: Audi red 35000 20/11/2019 -Audi red 45000 20/11/2019 -
+11-01-2020 22:36:07    -        -    with message: 1
+11-01-2020 22:36:07    -    case 4 - selecet car   -    with message: 1
+11-01-2020 22:36:07    -    case 4 - selecet car   -    with message: selected CAR: Audi red 35000 20/11/2019 
+11-01-2020 22:36:07    -    case 4 - selecet car   -    with message: 1
+11-01-2020 22:36:13    -        -    with message: jonas Pedersen 125124123
+11-01-2020 22:36:13    -    case 5 - create booking   -    with message: jonas Pedersen 125124123
+11-01-2020 22:36:13    -    case 5 - create booking   -    with message: Audi 20/11/2019 jonas Pedersen 125124123
+11-01-2020 22:36:13    -    section2_6   -    with message: Booking has been created
+----------------------------Flow end----------------------------
+11-01-2020 22:36:23    -        -    with message: R
+----------------------------Flow start----------------------------
+11-01-2020 22:36:23    -    Feedback section   -    with message: R
+11-01-2020 22:36:25    -        -    with message: R 2
+11-01-2020 22:36:25    -    Choice case 1 - rating   -    with message: R 2
+11-01-2020 22:36:25    -    rating ok   -    with message: R 2
+11-01-2020 22:36:35    -        -    with message: R kildevej 19, 4000 roskilde
+11-01-2020 22:36:35    -    Choice case 2 - Location   -    with message: R kildevej 19, 4000 roskilde
+11-01-2020 22:36:35    -    Location registered   -    with message: R kildevej 19, 4000 roskilde
+11-01-2020 22:36:41    -        -    with message: R this was a nice service
+11-01-2020 22:36:41    -    Choice case 3 - description   -    with message: R this was a nice service
+11-01-2020 22:36:41    -    description registered ok   -    with message: R this was a nice service
+11-01-2020 22:36:45    -        -    with message: R malee
+11-01-2020 22:36:45    -    Choice case 4 - gender   -    with message: R malee
+11-01-2020 22:36:45    -    gender registered ok   -    with message: R malee
+11-01-2020 22:36:48    -        -    with message: R 23
+11-01-2020 22:36:48    -    Choice case 5 - age   -    with message: R 23
+11-01-2020 22:36:48    -    Age registered ok   -    with message: R 23
+----------------------------Flow end----------------------------
