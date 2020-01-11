@@ -209,7 +209,7 @@ namespace Server
                         {
                             case 1:
                                 File.AppendAllText(logPath, Setuplog("----------------------------Flow start----------------------------"));
-                                string section2_1 = "Case 0 - flow chosen";
+                                string section2_1 = "Create Section";
                                 Console.WriteLine(section2_1);
                                 File.AppendAllText(logPath, TimeStampForLog(section2_1, message));
                                 response = "2";
